@@ -45,7 +45,7 @@ function closeOrderModal() {
 }
 
 // Event delegation for dynamically rendered product cards
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   if (e.target.classList.contains('open-order-modal') && !e.target.classList.contains('btn-consult')) {
     const productName = e.target.getAttribute('data-product') || '';
     openOrderModal(productName);
@@ -56,7 +56,7 @@ document.addEventListener('click', function(e) {
 function setupModalForm() {
   const form = document.getElementById('modal-order-form');
   if (!form) return;
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (form.checkValidity()) {
       alert('✅ Order berhasil dikirim! Kami akan segera menghubungi Anda.');
@@ -69,7 +69,7 @@ function setupModalForm() {
 }
 
 // Close modal/lightbox on overlay click
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   const lb = document.getElementById('lightbox');
   if (lb && e.target === lb) closeLightbox();
   const modal = document.getElementById('orderModal');
@@ -77,7 +77,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Close modal/lightbox on Escape key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeLightbox();
     closeOrderModal();
@@ -94,7 +94,7 @@ function closeLightbox() {
 function setupNavButtons() {
   const navOrderBtns = document.querySelectorAll('.btn-consult');
   navOrderBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       openOrderModal();
     });
@@ -114,7 +114,7 @@ function setupHeroButtons() {
   const heroButtons = document.querySelectorAll('a[href="#order"], .open-order-modal');
   heroButtons.forEach(btn => {
     if (btn.classList.contains('btn-consult')) return;
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
       if (this.getAttribute('href') === '#order' || this.classList.contains('open-order-modal')) {
         e.preventDefault();
         openOrderModal();
@@ -137,7 +137,7 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Observe semua elemen dengan class fade-in
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  
+
   // Render products
   renderProducts('product-list');
   renderProducts('ecommerce-products');
